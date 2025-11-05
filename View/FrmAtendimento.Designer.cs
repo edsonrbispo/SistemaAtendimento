@@ -35,7 +35,6 @@
             imlIcones = new ImageList(components);
             btnExcluir = new Button();
             btnSalvar = new Button();
-            btnEditar = new Button();
             label4 = new Label();
             btnFinalizar = new Button();
             btnNovo = new Button();
@@ -70,7 +69,6 @@
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnSalvar);
-            groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnFinalizar);
             groupBox1.Controls.Add(btnNovo);
@@ -93,17 +91,19 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.Enabled = false;
             btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancelar.ImageIndex = 0;
             btnCancelar.ImageList = imlIcones;
-            btnCancelar.Location = new Point(377, 211);
+            btnCancelar.Location = new Point(290, 211);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(88, 33);
             btnCancelar.TabIndex = 27;
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextAlign = ContentAlignment.MiddleRight;
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // imlIcones
             // 
@@ -120,11 +120,12 @@
             // 
             // btnExcluir
             // 
+            btnExcluir.Enabled = false;
             btnExcluir.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExcluir.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluir.ImageIndex = 2;
             btnExcluir.ImageList = imlIcones;
-            btnExcluir.Location = new Point(286, 211);
+            btnExcluir.Location = new Point(197, 211);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(75, 33);
             btnExcluir.TabIndex = 26;
@@ -134,31 +135,19 @@
             // 
             // btnSalvar
             // 
+            btnSalvar.Enabled = false;
             btnSalvar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalvar.ImageAlign = ContentAlignment.MiddleLeft;
             btnSalvar.ImageIndex = 5;
             btnSalvar.ImageList = imlIcones;
-            btnSalvar.Location = new Point(196, 211);
+            btnSalvar.Location = new Point(106, 211);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(75, 33);
             btnSalvar.TabIndex = 25;
             btnSalvar.Text = "Salvar";
             btnSalvar.TextAlign = ContentAlignment.MiddleRight;
             btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            btnEditar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.ImageIndex = 1;
-            btnEditar.ImageList = imlIcones;
-            btnEditar.Location = new Point(106, 211);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 33);
-            btnEditar.TabIndex = 24;
-            btnEditar.Text = "Editar";
-            btnEditar.TextAlign = ContentAlignment.MiddleRight;
-            btnEditar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // label4
             // 
@@ -171,6 +160,7 @@
             // 
             // btnFinalizar
             // 
+            btnFinalizar.Enabled = false;
             btnFinalizar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnFinalizar.ImageAlign = ContentAlignment.MiddleLeft;
             btnFinalizar.ImageIndex = 6;
@@ -197,12 +187,14 @@
             btnNovo.Text = "Novo";
             btnNovo.TextAlign = ContentAlignment.MiddleRight;
             btnNovo.UseVisualStyleBackColor = true;
+            btnNovo.Click += btnNovo_Click;
             // 
             // txtObservacaoAtendimento
             // 
             txtObservacaoAtendimento.Location = new Point(226, 110);
             txtObservacaoAtendimento.Multiline = true;
             txtObservacaoAtendimento.Name = "txtObservacaoAtendimento";
+            txtObservacaoAtendimento.ReadOnly = true;
             txtObservacaoAtendimento.Size = new Size(493, 68);
             txtObservacaoAtendimento.TabIndex = 11;
             // 
@@ -217,6 +209,7 @@
             // 
             // cbxSituacaoAtendimento
             // 
+            cbxSituacaoAtendimento.Enabled = false;
             cbxSituacaoAtendimento.FormattingEnabled = true;
             cbxSituacaoAtendimento.Location = new Point(15, 110);
             cbxSituacaoAtendimento.Name = "cbxSituacaoAtendimento";
@@ -234,6 +227,7 @@
             // 
             // dtpAberturaAtendimento
             // 
+            dtpAberturaAtendimento.Enabled = false;
             dtpAberturaAtendimento.Location = new Point(520, 49);
             dtpAberturaAtendimento.Name = "dtpAberturaAtendimento";
             dtpAberturaAtendimento.Size = new Size(199, 23);
@@ -250,12 +244,13 @@
             // 
             // cbxNomeCliente
             // 
+            cbxNomeCliente.Enabled = false;
             cbxNomeCliente.FormattingEnabled = true;
             cbxNomeCliente.Location = new Point(115, 49);
             cbxNomeCliente.Name = "cbxNomeCliente";
             cbxNomeCliente.Size = new Size(382, 23);
             cbxNomeCliente.TabIndex = 3;
-       
+            cbxNomeCliente.SelectedIndexChanged += cbxNomeCliente_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -270,6 +265,7 @@
             // 
             txtCodigoCliente.Location = new Point(15, 49);
             txtCodigoCliente.Name = "txtCodigoCliente";
+            txtCodigoCliente.ReadOnly = true;
             txtCodigoCliente.Size = new Size(83, 23);
             txtCodigoCliente.TabIndex = 1;
             // 
@@ -291,6 +287,7 @@
             groupBox2.Controls.Add(txtEtapaObservacao);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(dgvEtapasAtendimento);
+            groupBox2.Enabled = false;
             groupBox2.Location = new Point(12, 317);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(742, 290);
@@ -385,6 +382,7 @@
             txtCodigoAtendimento.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCodigoAtendimento.Location = new Point(654, 18);
             txtCodigoAtendimento.Name = "txtCodigoAtendimento";
+            txtCodigoAtendimento.ReadOnly = true;
             txtCodigoAtendimento.Size = new Size(100, 29);
             txtCodigoAtendimento.TabIndex = 25;
             // 
@@ -416,7 +414,7 @@
             Controls.Add(groupBox1);
             Name = "FrmAtendimento";
             Text = "Atendimento";
-   
+            Load += FrmAtendimento_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -457,6 +455,5 @@
         private Button btnCancelar;
         private Button btnExcluir;
         private Button btnSalvar;
-        private Button btnEditar;
     }
 }

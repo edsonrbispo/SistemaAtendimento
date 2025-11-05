@@ -97,14 +97,14 @@
             // novoAtendimentoToolStripMenuItem
             // 
             novoAtendimentoToolStripMenuItem.Name = "novoAtendimentoToolStripMenuItem";
-            novoAtendimentoToolStripMenuItem.Size = new Size(176, 22);
-            novoAtendimentoToolStripMenuItem.Text = "Novo Atendimento";
+            novoAtendimentoToolStripMenuItem.Size = new Size(180, 22);
+            novoAtendimentoToolStripMenuItem.Text = "Atendimento";
             novoAtendimentoToolStripMenuItem.Click += novoAtendimentoToolStripMenuItem_Click;
             // 
             // consultasToolStripMenuItem
             // 
             consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
-            consultasToolStripMenuItem.Size = new Size(176, 22);
+            consultasToolStripMenuItem.Size = new Size(180, 22);
             consultasToolStripMenuItem.Text = "Consultas";
             consultasToolStripMenuItem.Click += consultasToolStripMenuItem_Click;
             // 
