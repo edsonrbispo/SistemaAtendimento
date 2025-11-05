@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,20 @@ namespace SistemaAtendimento.Controller
         public List<SituacaoAtendimentos> ListarSituacaoAtendimento()
         {
             return _situacaoAtendimentoRepository.Listar();
+        }
+
+
+        public void Salvar(Atendimentos atendimento)
+        {
+            try
+            {
+                _atendimentoRepository.Inserir(atendimento);
+                _frmAtendimento.ExibirMensagem("Atendimento Salvo com Sucesso!");
+            }
+            catch (Exception ex)
+            {
+                _frmAtendimento.ExibirMensagem($"Erro ao Cadastrar o Atendimento: {ex.Message}");
+            }
         }
 
     }

@@ -131,24 +131,56 @@ namespace SistemaAtendimento.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            
+
             Atendimentos atendimento = new Atendimentos
             {
-                ClienteId = Convert.ToInt32(txtCodigoCliente.Text),
+  ClienteId = string.IsNullOrWhiteSpace(txtCodigoCliente.Text) ? null : Convert.ToInt32(txtCodigoCliente.Text),
                 UsuarioId = 1,
-                SituacaoAtendimentoId = Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
+                SituacaoAtendimentoId = cbxSituacaoAtendimento.SelectedValue == null ? null : Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
                 DataAbertura = dtpAberturaAtendimento.Value,
                 Observacao = txtObservacaoAtendimento.Text
             };
 
-            if(!ValidarDados(atendimento)) 
+            if (!ValidarDados(atendimento))
                 return;
+
+
+
         }
 
         private bool ValidarDados(Atendimentos atendimento)
         {
             //Criar Regras de Validação de Campos
-            
+            if (string.IsNullOrWhiteSpace(txtCodigoCliente.Text))
+            {
+                ExibirMensagem("Selecione um Cliente");
+                cbxNomeCliente.Focus();
+                return false;
+            }
+
+            if (cbxSituacaoAtendimento.SelectedValue == null)
+            {
+                ExibirMensagem("Selecione uma Situação do Atendimento");
+                cbxSituacaoAtendimento.Focus();
+                return false;
+            }
+
+             if(string.IsNullOrWhiteSpace(txtObservacaoAtendimento.Text))
+            {
+                ExibirMensagem("Digite uma observação do Atendimento");
+                txtObservacaoAtendimento.Focus();
+                return false;
+
+            }
+        
+
             return true;
+        }
+
+        public void ExibirMensagem(string mensagem)
+        {
+            MessageBox.Show(mensagem);
         }
     }
 }
