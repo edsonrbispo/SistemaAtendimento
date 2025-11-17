@@ -131,11 +131,10 @@ namespace SistemaAtendimento.View
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            
 
             Atendimentos atendimento = new Atendimentos
             {
-  ClienteId = string.IsNullOrWhiteSpace(txtCodigoCliente.Text) ? null : Convert.ToInt32(txtCodigoCliente.Text),
+                ClienteId = string.IsNullOrWhiteSpace(txtCodigoCliente.Text) ? null : Convert.ToInt32(txtCodigoCliente.Text),
                 UsuarioId = 1,
                 SituacaoAtendimentoId = cbxSituacaoAtendimento.SelectedValue == null ? null : Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
                 DataAbertura = dtpAberturaAtendimento.Value,
@@ -145,7 +144,7 @@ namespace SistemaAtendimento.View
             if (!ValidarDados(atendimento))
                 return;
 
-
+            _atendimentoController.Salvar(atendimento);
 
         }
 
