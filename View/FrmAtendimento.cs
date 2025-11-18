@@ -17,10 +17,13 @@ namespace SistemaAtendimento.View
 
         private AtendimentoController _atendimentoController;
 
-        public FrmAtendimento()
+        private int? _atendimentoId;
+        public FrmAtendimento(int? atendimentoId = null)
         {
             InitializeComponent();
             _atendimentoController = new AtendimentoController(this);
+            
+            _atendimentoId = atendimentoId;
         }
 
 
@@ -74,6 +77,29 @@ namespace SistemaAtendimento.View
             CarregarClientes();
             CarregarEtapas();
             CarregarSituacaoAtendimento();
+
+            if (_atendimentoId.HasValue)
+            {
+               var atendimento = _atendimentoController.BuscarAtendimentoPorId(_atendimentoId.Value);
+
+                if(atendimento != null)
+                {
+                    //Preencher campos
+                    PreencherCampos(atendimento);
+                }
+            }
+        }
+
+        private void PreencherCampos(Atendimentos atendimento)
+        {
+            txtCodigoAtendimento.Text = atendimento.Id.ToString();
+            txtCodigoCliente.Text = atendimento.ClienteId.ToString();
+            cbxNomeCliente.SelectedValue = atendimento.ClienteId;
+            cbxSituacaoAtendimento.SelectedValue = atendimento.SituacaoAtendimentoId;
+            dtpAberturaAtendimento.Value = atendimento.DataAbertura ?? DateTime.Now;
+            txtObservacaoAtendimento.Text = atendimento.Observacao;
+
+
         }
 
         private void cbxNomeCliente_SelectedIndexChanged(object sender, EventArgs e)

@@ -45,8 +45,11 @@
             dgvConsultaAtendimento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvConsultaAtendimento.Location = new Point(22, 85);
             dgvConsultaAtendimento.Name = "dgvConsultaAtendimento";
+            dgvConsultaAtendimento.ReadOnly = true;
+            dgvConsultaAtendimento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvConsultaAtendimento.Size = new Size(641, 265);
             dgvConsultaAtendimento.TabIndex = 0;
+            dgvConsultaAtendimento.CellDoubleClick += dgvConsultaAtendimento_CellDoubleClick;
             // 
             // txtFiltro
             // 

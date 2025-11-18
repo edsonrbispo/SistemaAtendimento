@@ -53,7 +53,7 @@ namespace SistemaAtendimento
         private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConsultaAtendimento frmConsultaAtendimento = new FrmConsultaAtendimento();
-            frmConsultaAtendimento.ShowDialog();
+            frmConsultaAtendimento.Show();
         }
 
         private void etapasToolStripMenuItem_Click(object sender, EventArgs e)
