@@ -41,13 +41,13 @@ namespace SistemaAtendimento
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCadastroUsuario frmCadastroUsuario = new FrmCadastroUsuario();
-            frmCadastroUsuario.ShowDialog();
+            frmCadastroUsuario.Show();
         }
 
         private void novoAtendimentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAtendimento frmAtendimento = new FrmAtendimento();
-            frmAtendimento.ShowDialog();
+            frmAtendimento.Show();
         }
 
         private void consultasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,13 +59,13 @@ namespace SistemaAtendimento
         private void etapasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCadastroEtapa frmCadastroEtapa = new FrmCadastroEtapa();
-            frmCadastroEtapa.ShowDialog();
+            frmCadastroEtapa.Show();
         }
 
         private void situacaoAtendimentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCadastroSituacaoAtendimento frmCadastroSituacaoAtendimento = new FrmCadastroSituacaoAtendimento();
-            frmCadastroSituacaoAtendimento.ShowDialog();
+            frmCadastroSituacaoAtendimento.Show();
         }
     }
 }

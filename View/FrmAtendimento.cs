@@ -99,6 +99,15 @@ namespace SistemaAtendimento.View
             dtpAberturaAtendimento.Value = atendimento.DataAbertura ?? DateTime.Now;
             txtObservacaoAtendimento.Text = atendimento.Observacao;
 
+            btnNovo.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnExcluir.Enabled = true;
+            btnCancelar.Enabled = true;
+            btnFinalizar.Enabled = true;
+            cbxSituacaoAtendimento.Enabled = true;          
+            txtObservacaoAtendimento.ReadOnly = false;
+
+
 
         }
 
@@ -160,6 +169,7 @@ namespace SistemaAtendimento.View
 
             Atendimentos atendimento = new Atendimentos
             {
+                Id = _atendimentoId ?? null,
                 ClienteId = string.IsNullOrWhiteSpace(txtCodigoCliente.Text) ? null : Convert.ToInt32(txtCodigoCliente.Text),
                 UsuarioId = 1,
                 SituacaoAtendimentoId = cbxSituacaoAtendimento.SelectedValue == null ? null : Convert.ToInt32(cbxSituacaoAtendimento.SelectedValue),
@@ -170,7 +180,14 @@ namespace SistemaAtendimento.View
             if (!ValidarDados(atendimento))
                 return;
 
-            _atendimentoController.Salvar(atendimento);
+            if (_atendimentoId.HasValue && _atendimentoId > 0)
+            {
+                _atendimentoController.Atualizar(atendimento);
+            }
+            else
+            {
+                _atendimentoController.Salvar(atendimento);
+            }                
 
         }
 

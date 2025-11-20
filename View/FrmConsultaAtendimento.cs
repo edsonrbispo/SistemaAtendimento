@@ -54,17 +54,10 @@ namespace SistemaAtendimento.View
                 int id  = (int)dgvConsultaAtendimento.Rows[e.RowIndex].Cells["Id"].Value;
 
                 //MessageBox.Show(id.ToString());
-
-
                 this.Close();
                 var atendimento = new FrmAtendimento(id);
                 atendimento.Show();
-
-               
-
-
-
-            }
+             }
            
         }
     }
