@@ -22,7 +22,7 @@ namespace SistemaAtendimento.View
         {
             InitializeComponent();
             _atendimentoController = new AtendimentoController(this);
-            
+
             _atendimentoId = atendimentoId;
         }
 
@@ -80,9 +80,9 @@ namespace SistemaAtendimento.View
 
             if (_atendimentoId.HasValue)
             {
-               var atendimento = _atendimentoController.BuscarAtendimentoPorId(_atendimentoId.Value);
+                var atendimento = _atendimentoController.BuscarAtendimentoPorId(_atendimentoId.Value);
 
-                if(atendimento != null)
+                if (atendimento != null)
                 {
                     //Preencher campos
                     PreencherCampos(atendimento);
@@ -104,7 +104,7 @@ namespace SistemaAtendimento.View
             btnExcluir.Enabled = true;
             btnCancelar.Enabled = true;
             btnFinalizar.Enabled = true;
-            cbxSituacaoAtendimento.Enabled = true;          
+            cbxSituacaoAtendimento.Enabled = true;
             txtObservacaoAtendimento.ReadOnly = false;
 
 
@@ -153,11 +153,13 @@ namespace SistemaAtendimento.View
             btnNovo.Enabled = true;
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
+            btnExcluir.Enabled = false;
         }
 
         private void LimparCampos()
         {
             txtCodigoCliente.Clear();
+            txtCodigoAtendimento.Clear();
             cbxNomeCliente.SelectedIndex = -1;
             cbxSituacaoAtendimento.SelectedIndex = -1;
             txtObservacaoAtendimento.Clear();
@@ -186,8 +188,15 @@ namespace SistemaAtendimento.View
             }
             else
             {
-                _atendimentoController.Salvar(atendimento);
-            }                
+                int? atendimentoId = _atendimentoController.Salvar(atendimento);
+
+                txtCodigoAtendimento.Text = atendimentoId.ToString();
+
+                _atendimentoId = atendimentoId;
+
+                btnExcluir.Enabled = true;
+
+            }
 
         }
 
@@ -208,14 +217,14 @@ namespace SistemaAtendimento.View
                 return false;
             }
 
-             if(string.IsNullOrWhiteSpace(txtObservacaoAtendimento.Text))
+            if (string.IsNullOrWhiteSpace(txtObservacaoAtendimento.Text))
             {
                 ExibirMensagem("Digite uma observação do Atendimento");
                 txtObservacaoAtendimento.Focus();
                 return false;
 
             }
-        
+
 
             return true;
         }
@@ -223,6 +232,22 @@ namespace SistemaAtendimento.View
         public void ExibirMensagem(string mensagem)
         {
             MessageBox.Show(mensagem);
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Deseja Excluir este Cliente?",
+                "Confirmação",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                int id = Convert.ToInt32(txtCodigoAtendimento.Text);
+                _atendimentoController.Excluir(id);
+                DesativarCampos();
+
+            }
         }
     }
 }
