@@ -15,7 +15,6 @@ namespace SistemaAtendimento.Repositories
         public List<EtapasAtendimentos> Listar(int atendimentoId)
         {
             var etapasAtendimento = new List<EtapasAtendimentos>();
-
             using (var conexao = ConexaoDB.GetConexao())
             {
                 string sql = @"SELECT * FROM etapa_atendimentos WHERE atendimento_id = @atendimentoId";
@@ -23,7 +22,6 @@ namespace SistemaAtendimento.Repositories
                 using (var comando = new SqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@atendimentoId", atendimentoId);
-
                     conexao.Open();
 
                     using (var linhas = comando.ExecuteReader())
@@ -37,7 +35,7 @@ namespace SistemaAtendimento.Repositories
                                 EtapaId = Convert.ToInt32(linhas["etapa_id"]),
                                 UsuarioId = Convert.ToInt32(linhas["usuario_id"]),
                                 DataCadastro = linhas["data_cadastro"] as DateTime?,
-                                Observacao = linhas["obeservacao"].ToString(),
+                                Observacao = linhas["observacao"].ToString(),
                             });
                         }
                     }

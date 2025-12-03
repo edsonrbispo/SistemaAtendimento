@@ -48,7 +48,7 @@
             label2 = new Label();
             txtCodigoCliente = new TextBox();
             label1 = new Label();
-            groupBox2 = new GroupBox();
+            grbEtapasAtendimento = new GroupBox();
             btnExcluirEtapa = new Button();
             cbxEtapaAtendimento = new ComboBox();
             btnAdicionarEtapa = new Button();
@@ -60,7 +60,7 @@
             txtCodigoAtendimento = new TextBox();
             btnPesquisarAtendimento = new Button();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            grbEtapasAtendimento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEtapasAtendimento).BeginInit();
             SuspendLayout();
             // 
@@ -279,26 +279,25 @@
             label1.TabIndex = 0;
             label1.Text = "Cód. Cliente";
             // 
-            // groupBox2
+            // grbEtapasAtendimento
             // 
-            groupBox2.Controls.Add(btnExcluirEtapa);
-            groupBox2.Controls.Add(cbxEtapaAtendimento);
-            groupBox2.Controls.Add(btnAdicionarEtapa);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(txtEtapaObservacao);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(dgvEtapasAtendimento);
-            groupBox2.Enabled = false;
-            groupBox2.Location = new Point(12, 317);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(742, 290);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Etapas do Atendimento";
+            grbEtapasAtendimento.Controls.Add(btnExcluirEtapa);
+            grbEtapasAtendimento.Controls.Add(cbxEtapaAtendimento);
+            grbEtapasAtendimento.Controls.Add(btnAdicionarEtapa);
+            grbEtapasAtendimento.Controls.Add(label8);
+            grbEtapasAtendimento.Controls.Add(txtEtapaObservacao);
+            grbEtapasAtendimento.Controls.Add(label7);
+            grbEtapasAtendimento.Controls.Add(dgvEtapasAtendimento);
+            grbEtapasAtendimento.Enabled = false;
+            grbEtapasAtendimento.Location = new Point(12, 317);
+            grbEtapasAtendimento.Name = "grbEtapasAtendimento";
+            grbEtapasAtendimento.Size = new Size(742, 290);
+            grbEtapasAtendimento.TabIndex = 1;
+            grbEtapasAtendimento.TabStop = false;
+            grbEtapasAtendimento.Text = "Etapas do Atendimento";
             // 
             // btnExcluirEtapa
             // 
-            btnExcluirEtapa.Enabled = false;
             btnExcluirEtapa.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnExcluirEtapa.ImageAlign = ContentAlignment.MiddleLeft;
             btnExcluirEtapa.ImageIndex = 0;
@@ -311,6 +310,7 @@
             btnExcluirEtapa.Text = "Excluir Etapa";
             btnExcluirEtapa.TextAlign = ContentAlignment.MiddleRight;
             btnExcluirEtapa.UseVisualStyleBackColor = true;
+            btnExcluirEtapa.Click += btnExcluirEtapa_Click;
             // 
             // cbxEtapaAtendimento
             // 
@@ -333,6 +333,7 @@
             btnAdicionarEtapa.Text = "Adicionar Etapa";
             btnAdicionarEtapa.TextAlign = ContentAlignment.MiddleRight;
             btnAdicionarEtapa.UseVisualStyleBackColor = true;
+            btnAdicionarEtapa.Click += btnAdicionarEtapa_Click;
             // 
             // label8
             // 
@@ -365,6 +366,8 @@
             dgvEtapasAtendimento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEtapasAtendimento.Location = new Point(318, 22);
             dgvEtapasAtendimento.Name = "dgvEtapasAtendimento";
+            dgvEtapasAtendimento.ReadOnly = true;
+            dgvEtapasAtendimento.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEtapasAtendimento.Size = new Size(401, 234);
             dgvEtapasAtendimento.TabIndex = 0;
             // 
@@ -411,15 +414,15 @@
             Controls.Add(btnPesquisarAtendimento);
             Controls.Add(txtCodigoAtendimento);
             Controls.Add(label9);
-            Controls.Add(groupBox2);
+            Controls.Add(grbEtapasAtendimento);
             Controls.Add(groupBox1);
             Name = "FrmAtendimento";
             Text = "Atendimento";
             Load += FrmAtendimento_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            grbEtapasAtendimento.ResumeLayout(false);
+            grbEtapasAtendimento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEtapasAtendimento).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -433,7 +436,7 @@
         private Label label2;
         private TextBox txtCodigoCliente;
         private Label label1;
-        private GroupBox groupBox2;
+        private GroupBox grbEtapasAtendimento;
         private TextBox txtObservacaoAtendimento;
         private Label label6;
         private ComboBox cbxSituacaoAtendimento;
