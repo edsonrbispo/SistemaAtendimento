@@ -304,7 +304,7 @@ namespace SistemaAtendimento.View
                 AtendimentoId = _atendimentoId.Value,
                 EtapaId = Convert.ToInt32(cbxEtapaAtendimento.SelectedValue),
                 UsuarioId = 1,
-                DataCadastro = DateTime.Now,
+                DataCadastro = dtpAberturaAtendimento.Value,
                 Observacao = txtEtapaObservacao.Text
             };
 
