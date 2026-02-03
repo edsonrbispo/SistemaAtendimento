@@ -1,3 +1,5 @@
+using SistemaAtendimento.View;
+
 namespace SistemaAtendimento
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace SistemaAtendimento
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmTelaPrincipal());
+            Application.Run(new FrmLogin());
         }
     }
 }

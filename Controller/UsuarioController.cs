@@ -78,5 +78,14 @@ namespace SistemaAtendimento.Controller
                 _frmCadastroUsuario.ExibirMensagem($"Erro ao excluir Etapa: {ex.Message}");
             }
         }
+
+
+        public Usuarios Autenticar(string email, string senha)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+                return null;
+
+            return _usuarioRepository.Login(email, senha);
+        }
     }
 }
