@@ -36,7 +36,7 @@ namespace SistemaAtendimento.View
             {
                 MessageBox.Show($"Bem-vindo, {usuario.Nome}!");
 
-                FrmTelaPrincipal frm = new FrmTelaPrincipal();
+                FrmTelaPrincipal frm = new FrmTelaPrincipal(usuario);
                 frm.Show();
                 this.Hide();
             }
