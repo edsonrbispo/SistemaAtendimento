@@ -14,9 +14,11 @@ namespace SistemaAtendimento.View
 {
     public partial class FrmLogin : Form
     {
+
         private UsuarioController _usuarioController;
         public FrmLogin()
         {
+
             InitializeComponent();
 
             _usuarioController = new UsuarioController(null);
@@ -24,10 +26,12 @@ namespace SistemaAtendimento.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            
+
             Usuarios usuario = _usuarioController.Autenticar(
-                    txtEmail.Text.Trim(),
-                    txtSenha.Text.Trim()
-                );
+                txtEmail.Text.Trim(),
+                txtSenha.Text.Trim()
+            );
 
             if (usuario != null)
             {
@@ -36,6 +40,8 @@ namespace SistemaAtendimento.View
                 FrmTelaPrincipal principal = new FrmTelaPrincipal();
                 principal.Show();
 
+                FrmTelaPrincipal frm = new FrmTelaPrincipal(usuario);
+                frm.Show();
                 this.Hide();
 
             }

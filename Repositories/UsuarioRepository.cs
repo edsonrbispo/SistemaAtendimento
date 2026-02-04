@@ -51,6 +51,7 @@ namespace SistemaAtendimento.Repositories
             return usuarios;
         }
 
+
         public void Inserir(Usuarios usuarios)
         {
             using (var conexao = ConexaoDB.GetConexao())
@@ -97,6 +98,35 @@ namespace SistemaAtendimento.Repositories
                     conexao.Open();
                     comando.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public Usuarios Login(string email, string senha)
+        {
+            using (var conexao = ConexaoDB.GetConexao())
+            {
+                string sql = @"SELECT Id, Nome, Email
+                               FROM usuarios
+                               WHERE email = @email AND senha = @senha";
+
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@senha", senha);
+
+                conexao.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    return new Usuarios
+                    {
+                        Id = Convert.ToInt32(dr["Id"]),
+                        Nome = dr["Nome"].ToString(),
+                        Email = dr["Email"].ToString()
+                    };
+                }
+
+                return null;
             }
         }
     }

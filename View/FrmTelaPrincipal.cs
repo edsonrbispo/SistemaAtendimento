@@ -1,14 +1,18 @@
 using Microsoft.Data.SqlClient;
 using SistemaAtendimento.Database;
+using SistemaAtendimento.Model;
 using SistemaAtendimento.View;
 
 namespace SistemaAtendimento
 {
     public partial class FrmTelaPrincipal : Form
     {
-        public FrmTelaPrincipal()
+
+        private Usuarios _usuarioLogado;
+        public FrmTelaPrincipal(Usuarios usuario)
         {
             InitializeComponent();
+            _usuarioLogado = usuario;
         }
 
         private void btnConexao_Click(object sender, EventArgs e)
@@ -66,6 +70,20 @@ namespace SistemaAtendimento
         {
             FrmCadastroSituacaoAtendimento frmCadastroSituacaoAtendimento = new FrmCadastroSituacaoAtendimento();
             frmCadastroSituacaoAtendimento.Show();
+        }
+
+        private void FrmTelaPrincipal_Load(object sender, EventArgs e)
+        {
+            if (_usuarioLogado != null)
+            {
+                slblUsuario.Text = $"Usuário: {_usuarioLogado.Nome}";
+                slblPerfil.Text = $"Perfil: {_usuarioLogado.Perfil}";
+            }
+        }
+
+        private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
