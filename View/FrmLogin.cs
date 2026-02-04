@@ -26,7 +26,7 @@ namespace SistemaAtendimento.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            
+
 
             Usuarios usuario = _usuarioController.Autenticar(
                 txtEmail.Text.Trim(),
@@ -51,6 +51,9 @@ namespace SistemaAtendimento.View
             }
         }
 
-       
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
