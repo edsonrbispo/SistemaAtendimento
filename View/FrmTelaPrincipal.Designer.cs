@@ -41,7 +41,7 @@
             sairToolStripMenuItem = new ToolStripMenuItem();
             btnConexao = new Button();
             statusStrip1 = new StatusStrip();
-            slblUsuario = new ToolStripStatusLabel();
+            slblNome = new ToolStripStatusLabel();
             slblPerfil = new ToolStripStatusLabel();
             mnuTelaPrincipal.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -128,7 +128,7 @@
             // 
             // btnConexao
             // 
-            btnConexao.Location = new Point(664, 375);
+            btnConexao.Location = new Point(664, 391);
             btnConexao.Name = "btnConexao";
             btnConexao.Size = new Size(124, 23);
             btnConexao.TabIndex = 1;
@@ -138,24 +138,24 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { slblUsuario, slblPerfil });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { slblNome, slblPerfil });
             statusStrip1.Location = new Point(0, 428);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 22);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
-            // slblUsuario
+            // slblNome
             // 
-            slblUsuario.Name = "slblUsuario";
-            slblUsuario.Size = new Size(118, 17);
-            slblUsuario.Text = "toolStripStatusLabel1";
+            slblNome.Name = "slblNome";
+            slblNome.Size = new Size(118, 17);
+            slblNome.Text = "toolStripStatusLabel1";
             // 
             // slblPerfil
             // 
             slblPerfil.Name = "slblPerfil";
             slblPerfil.Size = new Size(118, 17);
-            slblPerfil.Text = "toolStripStatusLabel1";
+            slblPerfil.Text = "toolStripStatusLabel2";
             // 
             // FrmTelaPrincipal
             // 
@@ -193,7 +193,7 @@
         private ToolStripMenuItem sairToolStripMenuItem;
         private Button btnConexao;
         private StatusStrip statusStrip1;
-        private ToolStripStatusLabel slblUsuario;
+        private ToolStripStatusLabel slblNome;
         private ToolStripStatusLabel slblPerfil;
     }
 }

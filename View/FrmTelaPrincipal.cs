@@ -5,14 +5,18 @@ using SistemaAtendimento.View;
 
 namespace SistemaAtendimento
 {
+        
     public partial class FrmTelaPrincipal : Form
     {
 
         private Usuarios _usuarioLogado;
+
         public FrmTelaPrincipal(Usuarios usuario)
         {
             InitializeComponent();
+
             _usuarioLogado = usuario;
+           
         }
 
         private void btnConexao_Click(object sender, EventArgs e)
@@ -44,8 +48,17 @@ namespace SistemaAtendimento
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            if(_usuarioLogado.Perfil != "admin")
+            {
+                MessageBox.Show("Você não tem permissão para acessar esta função.");
+                return;
+            }
+
             FrmCadastroUsuario frmCadastroUsuario = new FrmCadastroUsuario();
             frmCadastroUsuario.Show();
+
+
         }
 
         private void novoAtendimentoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,11 +87,9 @@ namespace SistemaAtendimento
 
         private void FrmTelaPrincipal_Load(object sender, EventArgs e)
         {
-            if (_usuarioLogado != null)
-            {
-                slblUsuario.Text = $"Usuário: {_usuarioLogado.Nome}";
-                slblPerfil.Text = $"Perfil: {_usuarioLogado.Perfil}";
-            }
+            slblNome.Text = $"Usuário: {_usuarioLogado.Nome}";
+            slblPerfil.Text = $"Perfil: {_usuarioLogado.Perfil}";
+
         }
 
         private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)

@@ -105,7 +105,7 @@ namespace SistemaAtendimento.Repositories
         {
             using (var conexao = ConexaoDB.GetConexao())
             {
-                string sql = @"SELECT Id, Nome, Email
+                string sql = @"SELECT *
                                FROM usuarios
                                WHERE email = @email AND senha = @senha";
 
@@ -121,8 +121,9 @@ namespace SistemaAtendimento.Repositories
                     return new Usuarios
                     {
                         Id = Convert.ToInt32(dr["Id"]),
-                        Nome = dr["Nome"].ToString(),
-                        Email = dr["Email"].ToString()
+                        Nome = dr["nome"].ToString(),
+                        Email = dr["email"].ToString(),
+                        Perfil = dr["perfil"].ToString()
                     };
                 }
 

@@ -39,7 +39,7 @@
             // btnEntrar
             // 
             btnEntrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEntrar.Location = new Point(61, 193);
+            btnEntrar.Location = new Point(123, 191);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(166, 37);
             btnEntrar.TabIndex = 0;
@@ -86,6 +86,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(123, 9);
             label1.Name = "label1";
