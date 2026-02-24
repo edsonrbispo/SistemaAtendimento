@@ -23,7 +23,10 @@ namespace SistemaAtendimento.Services
                     page.PageColor(Colors.White);
                     page.DefaultTextStyle(x=> x.FontSize(10).FontFamily(Fonts.Verdana));
 
-                    page.Header();
+
+                    page.Header().BorderBottom(1).PaddingBottom(5).Row(row => { });
+
+                    page.Footer().AlignCenter().Text(t => { });
 
                 });
             
