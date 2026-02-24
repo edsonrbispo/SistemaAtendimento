@@ -74,6 +74,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(279, 35);
             txtEmail.TabIndex = 3;
+            txtEmail.Text = "edson@email.com";
             // 
             // txtSenha
             // 
@@ -82,6 +83,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(279, 35);
             txtSenha.TabIndex = 4;
+            txtSenha.Text = "senha123";
             // 
             // label1
             // 

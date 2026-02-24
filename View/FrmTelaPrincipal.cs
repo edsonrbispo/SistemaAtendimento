@@ -1,11 +1,12 @@
 using Microsoft.Data.SqlClient;
+using SistemaAtendimento.Controller;
 using SistemaAtendimento.Database;
 using SistemaAtendimento.Model;
 using SistemaAtendimento.View;
 
 namespace SistemaAtendimento
 {
-        
+
     public partial class FrmTelaPrincipal : Form
     {
 
@@ -16,7 +17,7 @@ namespace SistemaAtendimento
             InitializeComponent();
 
             _usuarioLogado = usuario;
-           
+
         }
 
         private void btnConexao_Click(object sender, EventArgs e)
@@ -48,8 +49,8 @@ namespace SistemaAtendimento
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            if(_usuarioLogado.Perfil != "admin")
+
+            if (_usuarioLogado.Perfil != "admin")
             {
                 MessageBox.Show("Você não tem permissão para acessar esta função.");
                 return;
@@ -95,6 +96,26 @@ namespace SistemaAtendimento
         private void FrmTelaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                var clienteController = new ClienteController(null);
+                clienteController.GerarRelatorioPDF();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao processar o relatório: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor= Cursors.Default;
+
+            }
         }
     }
 }

@@ -43,13 +43,15 @@
             statusStrip1 = new StatusStrip();
             slblNome = new ToolStripStatusLabel();
             slblPerfil = new ToolStripStatusLabel();
+            relatóriosToolStripMenuItem = new ToolStripMenuItem();
+            listaDeClientesToolStripMenuItem = new ToolStripMenuItem();
             mnuTelaPrincipal.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // mnuTelaPrincipal
             // 
-            mnuTelaPrincipal.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem, atendimentosToolStripMenuItem, sistemaToolStripMenuItem });
+            mnuTelaPrincipal.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem, atendimentosToolStripMenuItem, sistemaToolStripMenuItem, relatóriosToolStripMenuItem });
             mnuTelaPrincipal.Location = new Point(0, 0);
             mnuTelaPrincipal.Name = "mnuTelaPrincipal";
             mnuTelaPrincipal.Size = new Size(800, 24);
@@ -157,6 +159,20 @@
             slblPerfil.Size = new Size(118, 17);
             slblPerfil.Text = "toolStripStatusLabel2";
             // 
+            // relatóriosToolStripMenuItem
+            // 
+            relatóriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listaDeClientesToolStripMenuItem });
+            relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            relatóriosToolStripMenuItem.Size = new Size(71, 20);
+            relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // listaDeClientesToolStripMenuItem
+            // 
+            listaDeClientesToolStripMenuItem.Name = "listaDeClientesToolStripMenuItem";
+            listaDeClientesToolStripMenuItem.Size = new Size(180, 22);
+            listaDeClientesToolStripMenuItem.Text = "Lista de Clientes";
+            listaDeClientesToolStripMenuItem.Click += listaDeClientesToolStripMenuItem_Click;
+            // 
             // FrmTelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -195,5 +211,7 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel slblNome;
         private ToolStripStatusLabel slblPerfil;
+        private ToolStripMenuItem relatóriosToolStripMenuItem;
+        private ToolStripMenuItem listaDeClientesToolStripMenuItem;
     }
 }
